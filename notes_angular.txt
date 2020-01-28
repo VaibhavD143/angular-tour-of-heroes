@@ -1,3 +1,10 @@
 - selector in component is to add that component into main html file via component name as a tag
 - Pipes are a good way to format strings, currency amounts, dates and other display data. Angular ships with several built-in pipes and you can create your own.
     https://v6.angular.io/guide/pipes
+Dependency injection :
+    - provides needed services and objects. Provider is one class and if we are defining services and classes in single file then services will be defined first then class.
+    - otherwise forwardRef() method can be used
+    - Injectors are inherited, which means that if a given injector can't resolve a dependency, it asks the parent injector to resolve it.
+    - A component can get services from its own injector, from the injectors of its component ancestors, from the injector of its parent NgModule, or from the root injector.
+    - Provider can be defined at three places @injectable @NgModule @Component
+- Reserve the constructor for simple initialization such as wiring constructor parameters to properties. The constructor shouldn't do anything. It certainly shouldn't call a function that makes HTTP requests to a remote server as a real data service would.
