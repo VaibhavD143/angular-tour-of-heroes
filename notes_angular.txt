@@ -7,4 +7,36 @@ Dependency injection :
     - Injectors are inherited, which means that if a given injector can't resolve a dependency, it asks the parent injector to resolve it.
     - A component can get services from its own injector, from the injectors of its component ancestors, from the injector of its parent NgModule, or from the root injector.
     - Provider can be defined at three places @injectable @NgModule @Component
+- When you provide the service at the root level, Angular creates a single, shared instance of HeroService and injects into any class that asks for it. Registering the provider in the @Injectable metadata also allows Angular to optimize an app by removing the service if it turns out not to be used after all.
 - Reserve the constructor for simple initialization such as wiring constructor parameters to properties. The constructor shouldn't do anything. It certainly shouldn't call a function that makes HTTP requests to a remote server as a real data service would.
+- services can take a callback. It could return a Promise. It could return an Observable.
+- Angular only binds to public component properties. Hence messageService property must be public because you're about to bind to it in the template.
+- Notice that the new service imports the Angular Injectable symbol and annotates the class with the @Injectable() decorator. This marks the class as one that participates in the dependency injection system.
+- The @Injectable() decorator accepts a metadata object for the service, the same way the @Component() decorator did for your component classes.
+- The constructor with a parameter that declares a private messageService property. Angular will inject the singleton MessageService into that property when it creates the HeroService.
+
+Bootstraping:
+:declarations — this application's lone component.
+:imports — import BrowserModule to have browser specific services such as DOM rendering, sanitization, and location.
+:providers — the service providers.
+:bootstrap — the root component that Angular creates and inserts into the index.html host web page.
+- all about app.module file and declaration ways: https://v6.angular.io/guide/bootstrapping
+
+Providers:
+- When you add a service provider to the root application injector, it’s available throughout the app. Additionally, these providers are also available to all the classes in the app as long they have the lookup token.
+- You should always provide your service in the root injector unless there is a case where you want the service to be available only if the consumer imports a particular @NgModule.
+- all about provideIn and providers : https://v6.angular.io/guide/providers
+
+lazy-loading modules:
+-   Lazy loading is when you load modules only when you need them; for example, when routing.
+-   in lazy-loading module, each lazy-loaded module gets an injector which is child of root injector
+-   Any component created within a lazy loaded module’s context, such as by router navigation, gets the local instance of the service, not the instance in the root application injector.
+    Components in external modules continue to receive the instance created for the application root.
+
+-   Register a provider with a component when you must limit a service instance to a component and its component tree, that is, its child components.
+    For example, a user editing component, UserEditorComponent, that needs a private copy of a caching UserService should register the UserService with the UserEditorComponent.
+    Then each new instance of the UserEditorComponent gets its own cached service instance.
+-   When you register a provider at the component level, you get a new instance of the service with each new instance of that component.
+    More details : 
+        - https://v6.angular.io/guide/dependency-injection-in-action
+        - https://angular.io/guide/architecture-services

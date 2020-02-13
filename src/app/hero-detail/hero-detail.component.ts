@@ -1,5 +1,6 @@
 import { Component, OnInit , Input } from '@angular/core';
 import { Hero } from '../hero';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-hero-detail',
@@ -8,9 +9,11 @@ import { Hero } from '../hero';
 })
 export class HeroDetailComponent implements OnInit {
   
-  constructor() { }
+  constructor(private messageService : MessageService) { }
   
   ngOnInit() {
+    this.messageService.add("hero-detail componenet initiated!!");
+    // alert("hero-detail componenet initiated!!");
   }
   @Input() hero:Hero;
 
