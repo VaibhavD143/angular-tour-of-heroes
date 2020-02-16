@@ -40,3 +40,15 @@ lazy-loading modules:
     More details : 
         - https://v6.angular.io/guide/dependency-injection-in-action
         - https://angular.io/guide/architecture-services
+
+@NgModule : 
+    export : it will make available these modules's public declarations to all the components of importing module. Generally declarations are private hence only components
+    of that module can use it, exporting them will make it publcally available.
+Routing:
+-   forRoot() and forChild()
+-   <routerOutlet></routerOutlet> directive, It acts as a placeholder that marks the spot in the template where the router should display the components for that outlet.
+-   routerLink="/heroes" ,directive of RouterModule: it tells router and navigates, it will only creates component and append
+    which is different then putting 'href' in anchor tag. 'href' and 'routerLink' are different
+-   default path matching is for prefix unless explicitly mention "full" in 'pathMatch' attribute.
+-   to go back Location from angular/common and location.back
+-   ActivatedRoute used for extracting data from URL
