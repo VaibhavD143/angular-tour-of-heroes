@@ -29,8 +29,8 @@ export class HeroesComponent implements OnInit {
   }
   
   onSelect(hero:Hero):void{
-    this.messageService.add("Selections chnaged to :"+hero.name);
-    alert("Selections chnaged to :"+hero.name);
+    this.messageService.add("Selections changed to :"+hero.name);
+    alert("Selections changed to :"+hero.name);
     this.selectedHero = hero;
   }
 }

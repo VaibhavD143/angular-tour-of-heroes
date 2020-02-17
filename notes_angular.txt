@@ -52,3 +52,17 @@ Routing:
 -   default path matching is for prefix unless explicitly mention "full" in 'pathMatch' attribute.
 -   to go back Location from angular/common and location.back
 -   ActivatedRoute used for extracting data from URL
+
+Binding :
+-   If you reference a name that belongs to more than one of these namespaces, the template variable name takes precedence,
+    followed by a name in the directive's context, and, lastly, the component's member names.
+-   When you write a data-binding, you're dealing exclusively with the DOM properties and events of the target object, not HTML attributes.
+    more on binding :- https://angular.io/guide/template-syntax#property-binding
+    -   when template reference is given using '#' then it is only availabe to template but not to component
+-   in one-way binding we write [DOM property,not attribute name] = "component's property" or bind-property = "component property"
+-   <app-item-detail childItem="parentItem"></app-item-detail>: to reneder parentItem as a string
+-   <app-item-detail [childItem]="parentItem"></app-item-detail>: to render parentItem as a property of component
+-   we always have a choice between property binding and interpolation
+
+Form : 
+-
